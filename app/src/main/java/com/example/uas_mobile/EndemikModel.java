@@ -13,36 +13,47 @@ public class EndemikModel {
     @SerializedName("id")
     private String id;
 
+    @SerializedName("tipe")
+    private String tipe;
+
     @SerializedName("nama")
     private String nama;
+
+    @SerializedName("nama_latin")
+    private String nama_latin;
+
+    @SerializedName("famili")
+    private String famili;
+
+    @SerializedName("genus")
+    private String genus;
 
     @SerializedName("deskripsi")
     private String deskripsi;
 
-    @SerializedName("lokasi")
-    private String lokasi;
-
     @SerializedName("foto")
     private String foto;
 
-    @SerializedName("tipe")
-    private String tipe;
-    // Constructor
-    public EndemikModel(@NonNull String id, String nama, String deskripsi, String lokasi, String foto, String tipe) {
+    // Constructor Update
+    public EndemikModel(@NonNull String id, String tipe, String nama, String nama_latin, String famili, String genus, String deskripsi, String foto) {
         this.id = id;
-        this.nama = nama;
-        this.deskripsi = deskripsi;
-        this.lokasi = lokasi;
-        this.foto = foto;
         this.tipe = tipe;
+        this.nama = nama;
+        this.nama_latin = nama_latin;
+        this.famili = famili;
+        this.genus = genus;
+        this.deskripsi = deskripsi;
+        this.foto = foto;
     }
 
     // Getter
     @NonNull
     public String getId() { return id; }
-    public String getNama() { return nama; }
-    public String getDeskripsi() { return deskripsi; }
-    public String getLokasi() { return lokasi; }
-    public String getFoto() { return foto; }
     public String getTipe() { return tipe; }
+    public String getNama() { return nama; }
+    public String getNama_latin() { return nama_latin; }
+    public String getFamili() { return famili; }
+    public String getGenus() { return genus; }
+    public String getDeskripsi() { return deskripsi; }
+    public String getFoto() { return foto; }
 }
