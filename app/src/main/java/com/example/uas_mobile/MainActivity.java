@@ -1,49 +1,40 @@
 package com.example.uas_mobile;
 
 import android.os.Bundle;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import androidx.fragment.app.Fragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
-    private EndemikAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
 
-        fetchData();
-    }
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new HewanFragment())
+                    .commit();
+        }
 
-    private void fetchData() {
-        ApiService apiService = ApiClient.getApiService();
-        Call<List<EndemikModel>> call = apiService.getEndemikData();
+        bottomNav.setOnItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
 
-        call.enqueue(new Callback<List<EndemikModel>>() {
-            @Override
-            public void onResponse(Call<List<EndemikModel>> call, Response<List<EndemikModel>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    List<EndemikModel> listEndemik = response.body();
-                    adapter = new EndemikAdapter(MainActivity.this, listEndemik);
-                    recyclerView.setAdapter(adapter);
-                }
+            if (item.getItemId() == R.id.nav_hewan) {
+                selectedFragment = new HewanFragment();
+            } else if (item.getItemId() == R.id.nav_tumbuhan) {
+                selectedFragment = new TumbuhanFragment();
             }
 
-            @Override
-            public void onFailure(Call<List<EndemikModel>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Gagal mengambil data: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            if (selectedFragment != null) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, selectedFragment)
+                        .commit();
             }
+            return true;
         });
     }
 }
