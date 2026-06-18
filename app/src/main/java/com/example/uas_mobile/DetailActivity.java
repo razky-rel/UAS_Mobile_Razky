@@ -14,9 +14,9 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         String nama = getIntent().getStringExtra("nama");
-        String nama_latin = getIntent().getStringExtra("nama_latin"); // Tambahan
-        String famili = getIntent().getStringExtra("famili"); // Tambahan
-        String genus = getIntent().getStringExtra("genus"); // Tambahan
+        String nama_latin = getIntent().getStringExtra("nama_latin");
+        String famili = getIntent().getStringExtra("famili");
+        String genus = getIntent().getStringExtra("genus");
         String desc = getIntent().getStringExtra("deskripsi");
         String foto = getIntent().getStringExtra("foto");
 

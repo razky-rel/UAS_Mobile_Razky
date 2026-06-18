@@ -18,7 +18,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     AppDatabase.class, "endemik_database")
-                            .allowMainThreadQueries() // Mengizinkan proses database di thread utama (khusus buat pemula/UAS biar gampang)
+                            .allowMainThreadQueries()
                             .build();
                 }
             }
