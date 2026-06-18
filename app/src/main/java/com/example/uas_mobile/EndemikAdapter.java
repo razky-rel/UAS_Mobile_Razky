@@ -31,14 +31,12 @@ public class EndemikAdapter extends RecyclerView.Adapter<EndemikAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         EndemikModel item = dataList.get(position);
         holder.tvNama.setText(item.getNama());
-        holder.tvLokasi.setText(item.getLokasi());
         Glide.with(context).load(item.getFoto()).into(holder.imgEndemik);
 
         holder.itemView.setOnClickListener(v -> {
             android.content.Intent intent = new android.content.Intent(context, DetailActivity.class);
             intent.putExtra("nama", item.getNama());
             intent.putExtra("deskripsi", item.getDeskripsi());
-            intent.putExtra("foto", item.getFoto());
             context.startActivity(intent);
         });
     }
@@ -47,12 +45,11 @@ public class EndemikAdapter extends RecyclerView.Adapter<EndemikAdapter.ViewHold
     public int getItemCount() { return dataList.size(); }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNama, tvLokasi;
+        TextView tvNama;
         ImageView imgEndemik;
         public ViewHolder(View itemView) {
             super(itemView);
             tvNama = itemView.findViewById(R.id.tvNama);
-            tvLokasi = itemView.findViewById(R.id.tvLokasi);
             imgEndemik = itemView.findViewById(R.id.imgEndemik);
         }
     }

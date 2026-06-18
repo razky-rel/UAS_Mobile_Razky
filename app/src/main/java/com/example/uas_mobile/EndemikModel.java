@@ -22,16 +22,19 @@ public class EndemikModel {
     @SerializedName("lokasi")
     private String lokasi;
 
-    @SerializedName("foto") // Sesuai dengan JSON lo yang baru
+    @SerializedName("foto")
     private String foto;
 
+    @SerializedName("tipe")
+    private String tipe;
     // Constructor
-    public EndemikModel(@NonNull String id, String nama, String deskripsi, String lokasi, String foto) {
+    public EndemikModel(@NonNull String id, String nama, String deskripsi, String lokasi, String foto, String tipe) {
         this.id = id;
         this.nama = nama;
         this.deskripsi = deskripsi;
         this.lokasi = lokasi;
         this.foto = foto;
+        this.tipe = tipe;
     }
 
     // Getter
@@ -41,4 +44,5 @@ public class EndemikModel {
     public String getDeskripsi() { return deskripsi; }
     public String getLokasi() { return lokasi; }
     public String getFoto() { return foto; }
+    public String getTipe() { return tipe; }
 }
