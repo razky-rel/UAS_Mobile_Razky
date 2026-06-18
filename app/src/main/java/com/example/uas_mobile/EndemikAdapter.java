@@ -33,6 +33,14 @@ public class EndemikAdapter extends RecyclerView.Adapter<EndemikAdapter.ViewHold
         holder.tvNama.setText(item.getNama());
         holder.tvLokasi.setText(item.getLokasi());
         Glide.with(context).load(item.getFoto()).into(holder.imgEndemik);
+
+        holder.itemView.setOnClickListener(v -> {
+            android.content.Intent intent = new android.content.Intent(context, DetailActivity.class);
+            intent.putExtra("nama", item.getNama());
+            intent.putExtra("deskripsi", item.getDeskripsi());
+            intent.putExtra("foto", item.getFoto());
+            context.startActivity(intent);
+        });
     }
 
     @Override
