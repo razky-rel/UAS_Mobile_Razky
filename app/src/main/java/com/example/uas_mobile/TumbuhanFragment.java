@@ -25,10 +25,8 @@ public class TumbuhanFragment extends Fragment {
         rvTumbuhan = view.findViewById(R.id.rvTumbuhan);
         db = AppDatabase.getInstance(getContext());
 
-        // Ambil semua data
         List<EndemikModel> allData = db.endemikDao().getAllEndemik();
 
-        // Filter cuma yang "Tipe" nya "Tumbuhan"
         List<EndemikModel> listTumbuhan = new ArrayList<>();
         for (EndemikModel item : allData) {
             if ("Tumbuhan".equalsIgnoreCase(item.getTipe())) {
@@ -36,7 +34,6 @@ public class TumbuhanFragment extends Fragment {
             }
         }
 
-        // Pasang Adapter ke RecyclerView
         rvTumbuhan.setLayoutManager(new GridLayoutManager(getContext(), 2));
         EndemikAdapter adapter = new EndemikAdapter(getContext(), listTumbuhan);
         rvTumbuhan.setAdapter(adapter);

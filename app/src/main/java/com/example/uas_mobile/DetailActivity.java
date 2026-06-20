@@ -1,24 +1,27 @@
 package com.example.uas_mobile;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 
 public class DetailActivity extends AppCompatActivity {
+
+    private AppDatabase db;
+    private EndemikModel endemikItem;
+    private ImageView btnFavorite;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        String nama = getIntent().getStringExtra("nama");
-        String nama_latin = getIntent().getStringExtra("nama_latin");
-        String famili = getIntent().getStringExtra("famili");
-        String genus = getIntent().getStringExtra("genus");
-        String desc = getIntent().getStringExtra("deskripsi");
-        String foto = getIntent().getStringExtra("foto");
+        String id = getIntent().getStringExtra("id");
+        ImageView btnBack = findViewById(R.id.btnBack);
+        db = AppDatabase.getInstance(this);
+        endemikItem = db.endemikDao().getEndemikById(id);
 
         ImageView imgDetail = findViewById(R.id.imgDetail);
         TextView tvNama = findViewById(R.id.tvNamaDetail);
@@ -26,17 +29,46 @@ public class DetailActivity extends AppCompatActivity {
         TextView tvFamili = findViewById(R.id.tvFamiliDetail);
         TextView tvGenus = findViewById(R.id.tvGenusDetail);
         TextView tvDesc = findViewById(R.id.tvDescDetail);
+        btnFavorite = findViewById(R.id.btnFavorite);
 
-        tvNama.setText(nama);
-        tvDesc.setText(desc);
+        btnBack.setOnClickListener(v -> finish());
 
-        if (nama_latin != null) tvNamaLatin.setText(nama_latin);
-        if (famili != null) tvFamili.setText("Famili: " + famili);
-        if (genus != null) tvGenus.setText("Genus: " + genus);
+        if (endemikItem != null) {
+            tvNama.setText(endemikItem.getNama());
+            tvDesc.setText(endemikItem.getDeskripsi());
+            tvNamaLatin.setText(endemikItem.getNama_latin());
+            tvFamili.setText("Famili: " + endemikItem.getFamili());
+            tvGenus.setText("Genus: " + endemikItem.getGenus());
 
-        Glide.with(this)
-                .load(foto)
-                .placeholder(R.drawable.ic_launcher_background)
-                .into(imgDetail);
+            Glide.with(this)
+                    .load(endemikItem.getFoto())
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .into(imgDetail);
+
+            updateIconFavorite(endemikItem.isFavorite());
+
+            btnFavorite.setOnClickListener(v -> {
+                boolean statusBaru = !endemikItem.isFavorite();
+                endemikItem.setFavorite(statusBaru);
+
+                db.endemikDao().updateEndemik(endemikItem);
+
+                updateIconFavorite(statusBaru);
+
+                if (statusBaru) {
+                    Toast.makeText(this, "Dimasukkan ke Favorit", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Dihapus dari Favorit", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    private void updateIconFavorite(boolean isFav) {
+        if (isFav) {
+            btnFavorite.setImageResource(android.R.drawable.btn_star_big_on); // Bintang Kuning Menyala
+        } else {
+            btnFavorite.setImageResource(android.R.drawable.btn_star_big_off); // Bintang Kosong Abu-abu
+        }
     }
 }

@@ -32,6 +32,13 @@ public class SearchActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
+        ImageView btnFavTop = findViewById(R.id.btnFavTop);
+
+        btnFavTop.setOnClickListener(v -> {
+            android.content.Intent intent = new android.content.Intent(SearchActivity.this, FavoriteActivity.class);
+            startActivity(intent);
+        });
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

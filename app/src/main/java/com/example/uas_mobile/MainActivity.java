@@ -43,7 +43,16 @@ public class MainActivity extends AppCompatActivity {
                         .replace(R.id.fragment_container, selectedFragment)
                         .commit();
             }
+
             return true;
         });
+
+        ImageView btnFavTopHome = findViewById(R.id.btnFavTopHome);
+
+        btnFavTopHome.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FavoriteActivity.class);
+            startActivity(intent);
+        });
+
     }
 }

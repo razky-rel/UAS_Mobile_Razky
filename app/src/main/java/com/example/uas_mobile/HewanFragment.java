@@ -25,10 +25,8 @@ public class HewanFragment extends Fragment {
         rvHewan = view.findViewById(R.id.rvHewan);
         db = AppDatabase.getInstance(getContext());
 
-        // Ambil semua data
         List<EndemikModel> allData = db.endemikDao().getAllEndemik();
 
-        // Filter cuma yang "Tipe" nya "Hewan"
         List<EndemikModel> listHewan = new ArrayList<>();
         for (EndemikModel item : allData) {
             if ("Hewan".equalsIgnoreCase(item.getTipe())) {
@@ -36,7 +34,6 @@ public class HewanFragment extends Fragment {
             }
         }
 
-        // Pasang Adapter ke RecyclerView
         rvHewan.setLayoutManager(new GridLayoutManager(getContext(), 2));
         EndemikAdapter adapter = new EndemikAdapter(getContext(), listHewan);
         rvHewan.setAdapter(adapter);

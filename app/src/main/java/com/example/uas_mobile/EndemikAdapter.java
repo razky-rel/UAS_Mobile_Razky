@@ -35,12 +35,7 @@ public class EndemikAdapter extends RecyclerView.Adapter<EndemikAdapter.ViewHold
 
         holder.itemView.setOnClickListener(v -> {
             android.content.Intent intent = new android.content.Intent(context, DetailActivity.class);
-            intent.putExtra("nama", item.getNama());
-            intent.putExtra("nama_latin", item.getNama_latin());
-            intent.putExtra("famili", item.getFamili());
-            intent.putExtra("genus", item.getGenus());
-            intent.putExtra("deskripsi", item.getDeskripsi());
-            intent.putExtra("foto", item.getFoto());
+            intent.putExtra("id", item.getId());
             context.startActivity(intent);
         });
     }

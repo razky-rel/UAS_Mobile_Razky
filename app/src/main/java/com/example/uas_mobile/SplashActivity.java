@@ -24,7 +24,6 @@ public class SplashActivity extends AppCompatActivity {
         btnLanjut = findViewById(R.id.btnLanjut);
         db = AppDatabase.getInstance(this);
 
-        // Cek jumlah data di ROOM Database lokal
         int dataCount = db.endemikDao().getDataCount();
 
         if (dataCount > 0) {
@@ -44,11 +43,9 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<EndemikModel>> call, Response<List<EndemikModel>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    // Simpan data yang didownload ke ROOM Database lokal
                     List<EndemikModel> dataList = response.body();
                     db.endemikDao().insertAll(dataList);
 
-                    // Munculkan tombol "Data tersimpan, lanjut"
                     btnLanjut.setVisibility(View.VISIBLE);
                 } else {
                     Toast.makeText(SplashActivity.this, "Gagal memproses data server", Toast.LENGTH_SHORT).show();

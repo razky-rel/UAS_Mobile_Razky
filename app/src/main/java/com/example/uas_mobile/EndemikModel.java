@@ -34,8 +34,10 @@ public class EndemikModel {
     @SerializedName("foto")
     private String foto;
 
-    // Constructor Update
-    public EndemikModel(@NonNull String id, String tipe, String nama, String nama_latin, String famili, String genus, String deskripsi, String foto) {
+    private boolean isFavorite;
+
+
+    public EndemikModel(@NonNull String id, String tipe, String nama, String nama_latin, String famili, String genus, String deskripsi, String foto, boolean isFavorite) {
         this.id = id;
         this.tipe = tipe;
         this.nama = nama;
@@ -44,9 +46,9 @@ public class EndemikModel {
         this.genus = genus;
         this.deskripsi = deskripsi;
         this.foto = foto;
+        this.isFavorite = isFavorite;
     }
 
-    // Getter
     @NonNull
     public String getId() { return id; }
     public String getTipe() { return tipe; }
@@ -56,4 +58,6 @@ public class EndemikModel {
     public String getGenus() { return genus; }
     public String getDeskripsi() { return deskripsi; }
     public String getFoto() { return foto; }
+    public boolean isFavorite() { return isFavorite; }
+    public void setFavorite(boolean favorite) { isFavorite = favorite; }
 }
