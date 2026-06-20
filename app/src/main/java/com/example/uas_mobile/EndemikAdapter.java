@@ -57,4 +57,9 @@ public class EndemikAdapter extends RecyclerView.Adapter<EndemikAdapter.ViewHold
             imgEndemik = itemView.findViewById(R.id.imgEndemik);
         }
     }
+
+    public void updateList(List<EndemikModel> newList) {
+        this.dataList = newList;
+        notifyDataSetChanged();
+    }
 }
