@@ -117,7 +117,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Deskripsi Lengkap"
+                android:text="@string/label_description"
                 android:textColor="#6750A4"
                 android:textSize="15sp"
                 android:textStyle="bold"

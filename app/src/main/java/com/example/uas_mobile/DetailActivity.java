@@ -54,12 +54,10 @@ public class DetailActivity extends AppCompatActivity {
                 if (statusTerkini) {
                     db.endemikDao().deleteFavoriteById(id);
                     updateIconFavorite(false);
-                    Toast.makeText(DetailActivity.this, "Dihapus dari Favorit", Toast.LENGTH_SHORT).show();
-                } else {
+                    Toast.makeText(this, getString(R.string.toast_remove_fav), Toast.LENGTH_SHORT).show();                } else {
                     db.endemikDao().insertFavorite(new FavoriteModel(id));
                     updateIconFavorite(true);
-                    Toast.makeText(DetailActivity.this, "Dimasukkan ke Favorit", Toast.LENGTH_SHORT).show();
-                }
+                    Toast.makeText(this, getString(R.string.toast_add_fav), Toast.LENGTH_SHORT).show();                }
             });
         }
     }

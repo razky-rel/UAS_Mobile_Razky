@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profil Mahasiswa"
+        android:text="@string/title_profile"
         android:textSize="22sp"
         android:textStyle="bold"
         android:layout_marginBottom="32dp"/>
@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nama: Razky Ega Handaru"
+        android:text="@string/prof_name"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
@@ -41,7 +41,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NIM: 2410501063"
+        android:text="@string/prof_nim"
         android:textSize="14sp"
         android:alpha="0.7"
         android:layout_marginBottom="4dp"/>
@@ -49,7 +49,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kelas : B"
+        android:text="@string/prof_class"
         android:textSize="14sp"
         android:alpha="0.7"/>
 

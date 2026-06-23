@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">EndemikDB</string>
+
+    <string name="btn_splash">Data saved, continue</string>
+
+    <string name="navi_hewan">Animals</string>
+    <string name="navi_tumbuhan">Plants</string>
+    <string name="navi_profil">Profile</string>
+
+    <string name="title_search">Search</string>
+    <string name="title_favorite">My Favorites</string>
+    <string name="title_profile">Student Profile</string>
+    <string name="label_description">Full Description</string>
+
+    <string name="hint_search">Find animals or plants...</string>
+
+    <string name="prof_name">Name: Razky Ega Handaru</string>
+    <string name="prof_nim">SRN: 2410501063</string>
+    <string name="prof_class">Class: B</string>
+
+    <string name="toast_add_fav">Added to Favorites</string>
+    <string name="toast_remove_fav">Removed from Favorites</string>
+</resources>

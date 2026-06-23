@@ -1,5 +1,23 @@
 <resources>
-    <string name="app_name">UAS_Mobile</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">EndemikDB</string>
+
+    <string name="btn_splash">Data tersimpan, lanjut</string>
+
+    <string name="navi_hewan">Hewan</string>
+    <string name="navi_tumbuhan">Tumbuhan</string>
+    <string name="navi_profil">Profil</string>
+
+    <string name="title_search">Pencarian</string>
+    <string name="title_favorite">Favorit Saya</string>
+    <string name="title_profile">Profil Mahasiswa</string>
+    <string name="label_description">Deskripsi Lengkap</string>
+
+    <string name="hint_search">Temukan hewan atau tumbuhan...</string>
+
+    <string name="prof_name">Nama: Razky Ega Handaru</string>
+    <string name="prof_nim">NIM: 2410501063</string>
+    <string name="prof_class">Kelas: B</string>
+
+    <string name="toast_add_fav">Dimasukkan ke Favorit</string>
+    <string name="toast_remove_fav">Dihapus dari Favorit</string>
 </resources>
