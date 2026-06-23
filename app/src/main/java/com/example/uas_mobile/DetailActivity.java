@@ -45,20 +45,20 @@ public class DetailActivity extends AppCompatActivity {
                     .placeholder(R.drawable.ic_launcher_background)
                     .into(imgDetail);
 
-            updateIconFavorite(endemikItem.isFavorite());
+            boolean isFavSaatIni = db.endemikDao().isFavorite(id);
+            updateIconFavorite(isFavSaatIni);
 
             btnFavorite.setOnClickListener(v -> {
-                boolean statusBaru = !endemikItem.isFavorite();
-                endemikItem.setFavorite(statusBaru);
+                boolean statusTerkini = db.endemikDao().isFavorite(id);
 
-                db.endemikDao().updateEndemik(endemikItem);
-
-                updateIconFavorite(statusBaru);
-
-                if (statusBaru) {
-                    Toast.makeText(this, "Dimasukkan ke Favorit", Toast.LENGTH_SHORT).show();
+                if (statusTerkini) {
+                    db.endemikDao().deleteFavoriteById(id);
+                    updateIconFavorite(false);
+                    Toast.makeText(DetailActivity.this, "Dihapus dari Favorit", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Dihapus dari Favorit", Toast.LENGTH_SHORT).show();
+                    db.endemikDao().insertFavorite(new FavoriteModel(id));
+                    updateIconFavorite(true);
+                    Toast.makeText(DetailActivity.this, "Dimasukkan ke Favorit", Toast.LENGTH_SHORT).show();
                 }
             });
         }
