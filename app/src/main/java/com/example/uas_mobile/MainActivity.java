@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
                 selectedFragment = new HewanFragment();
             } else if (item.getItemId() == R.id.nav_tumbuhan) {
                 selectedFragment = new TumbuhanFragment();
+            } else if (item.getItemId() == R.id.nav_profil) {
+                selectedFragment = new ProfilFragment();
             }
 
             if (selectedFragment != null) {
